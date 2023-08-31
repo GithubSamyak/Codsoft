@@ -1,0 +1,51 @@
+import java.util.*;
+
+
+public class codsoft1 {
+    public static int takeInput() {
+        int user;
+        System.out.println("Enter your guess: ");
+        Scanner sc = new Scanner(System.in);
+        user = sc.nextInt();
+        return user;
+    }
+
+    public static void condition(int a, int b) {
+        if (a == b) {
+            System.out.println("Yes, this is the correct number.");
+        } else if (a > b) {
+            System.out.println("Your number is greater than the computer number.");
+        } else {
+            System.out.println("Your number is smaller than the computer number.");
+        }
+    }
+
+    public static void main(String args[]) {
+        int user = 0;
+        int comp = 0;
+        int iteration = 0;
+        Guess g = new Guess();
+        do{
+            user = takeInput();
+            comp = g.computerNo();
+            condition(user, comp);
+            iteration++;
+        }
+            while (user != comp) ;
+
+        System.out.println("You guessed the number in " + iteration + " iterations");
+    }
+}
+class Guess {
+    private int comp;
+
+    public Guess() {
+        Random r = new Random();
+        comp = r.nextInt(100);
+        System.out.println("Guess no. from 1 to 100");
+    }
+
+    public int computerNo() {
+        return comp;
+    }
+}
